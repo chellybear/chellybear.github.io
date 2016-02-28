@@ -1,31 +1,173 @@
 <!DOCTYPE html>
 <html>
+<script>$("document").ready(function(){
+// Mouseover functions - Navbar
+$('a').hover(function() { 
+$('a:hover').stop().animate({"opacity":"0.5"});}
+,function(){$('a').stop().animate({"opacity":"1"});
+});
+var head1 = $(".jumbotron h1");
+var head2 = $(".jumbotron h2");
+// Scrolldown functions
+$(window).scroll(function(){
+if($(window).scrollTop() < 50){
+// head1
+head1.stop(true,true).animate({"opacity":"1"});
+   } 
+  else {         head1.stop(true,true).animate({"opacity":"0"});
+   }
+// head2
+  if($(window).scrollTop() < 200){
+head2.stop(true,true).animate({"opacity":"1"});
+   } 
+  else {         head2.stop(true,true).animate({"opacity":"0"});
+   }
+});
+});</script>
 <body>
-<div id="header">
-<h1>Hello World</h1>
-</div>
+<!--SCROLLSPY-->
+<body data-spy="scroll" data-target=".navbar" data-offset="30">
 
-<div id="subheader">
-<p>I'm hosted with GitHub Pages!!</p>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+      <!--NAVIGATION-->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span></button>
+        <a class="navbar-brand" href="#" id="name"><b>apfos.</b></a>
+    </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a id="aboutme-tab" href="#aboutme">About Me</a></li>
+        <li><a id="portfolio-tab" href="#portfolio">Portfolio</a></li>
+        <li><a id="contact-tab" href="#contact">Contact</a></li>
+      </ul>
+      </div>
+    </nav>
+    <!--MAIN-->
+  <div id="tophead" class="jumbotron">
+    <h1>a pocket full of stars.</h1>
+    <h2>make a wish</h2>
+  </div>
+      <div id="aboutme" data-type="background" data-speed="10" class="pages">
+        <!--ABOUT ME-->
+        <h1>About Me</h1> 
+        <p> Hello there! I'm a self-taught web developer (in training!), mainly using <a href="http://freecodecamp.com/"><b>FreeCodeCamp</b></a> and other online tutorials to better myself. I'm currently a college student, majoring Computer Science/Engineering. I'm familiar with Java, C++, C#, and Javascript.
+        </p>
+        <br>
+  </div>
+      <!--PORTFOLIO-->
+      <div id="portfolio" data-type="background" data-speed="10" class="pages"> 
+        <h1>Portfolio</h1>
+        <p>Nothing here yet!</p>
+      </div>       
+      <!--CONTACT-->
+      <div id="contact" data-type="background" data-speed="10" class="pages">     
+        <h3>
+          <a href="https://github.com/chellybear"><i class="fa fa-github"></i></a>
+          <a href="https://www.facebook.com/rachel.jachin"><i class="fa fa-facebook-official"></i></a>
+          <a href="https://twitter.com/chellybons"><i class="fa fa-twitter"></i></a>
+        </h3>
+      </div>
+  <div id="credit" align=center>© Rachel Jae. All rights reserved.</div>
 </div>
+</body>
 
 </body>
 
 <style>
-#header {
-    background-color:#996666;
-	font-family:Calibri;
-    color:white;
-    text-align:center;
-    padding:5px;
+#tophead{
+  background: url("http://i.imgur.com/OgPhGn2.jpg") 50% 0
+  repeat fixed; max-height: 1000px; 
+  height: 1000px; 
+  margin: 0 auto; 
+  width: 100%; 
+  padding-top: 200px;
+  max-width: 1920px; 
+  position: relative; 
+  font-size:60px;
+  text-align: center;
+  text-shadow: 0px 3px 3px black;
+  font-family: "Amatic SC";
+  color:white;
+}
+h1{
+  margin-top: 100px;
+  color:white;
+}
+h2{
+  font-family: "Quicksand";
+  font-size: 15px;
+  letter-spacing: 10px;
+}
+h3{
+  letter-spacing: 15px;
+}
+body{
+  font-family: 'Raleway',
+  sans-serif;
+  background-attachment:fixed;
+  background-color: black;
+}
+ul.nav-pills{
+  position: fixed;
+  width: 200px;
+}
+#picme{
+  align-content:center;
+  width:200px;
+  height:auto;
+  border-radius:50%;
 }
 
-#subheader {
-    background-color:#669966;
-	font-family:Calibri;
-    color:white;
-    text-align:center;
-    padding:5px;
+#aboutme { 
+background-color:#13101B;
+  box-shadow: 0px 5px 50px black;
+  height: 500px; 
+  margin: 0 auto; 
+  padding-top: 50px;
+  width: 100%; 
+  max-width: 1920px; 
+  position: relative; 
+  text-align: center;
+}
+#portfolio{
+  background-color:#221122;
+  height: 500px; 
+  margin: 0 auto; 
+  width: 100%; 
+  padding-top: 50px;
+  max-width: 1920px; 
+  position: relative; 
+  text-align: center;
+  box-shadow: inset 0px 0px 5px black;
+}
+#contact{
+ background: url("http://i.imgur.com/LQnSFsx.jpg") 50% 0 repeat fixed; max-height: 500px; 
+  height: 500px; 
+  margin: 0 auto; 
+  width: 100%; 
+  padding-top: 200px;
+  max-width: 1920px; 
+  position: relative; 
+  text-align: center;
+  box-shadow: inset 0px 0px 5px black;
+}
+p{
+  text-align: center;
+  color: white;
+  text-shadow: 0px 2px 1px black;
+  font-size: 20px;
+}
+#credit{
+  color:gray;
+}
+
+a{
+  color:white;
+}
+a:hover{
+  color:black;
+  text-decoration: none;
 }
 </style>
 </html>
