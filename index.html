@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html >
   <head>
@@ -5,7 +6,7 @@
     <meta name="google" value="notranslate">
 
 
-    <title>hello world.</title>
+    <title>CodePen - A Pen by  Rachel Jae</title>
     <!--Import stuff-->
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
@@ -38,6 +39,7 @@
   color: white;
   background-size: cover;
 }
+
 @-webkit-keyframes fadeIn {
 from {opacity: 0;}
 to {opacity: 1;}
@@ -50,6 +52,7 @@ to{opacity: 1;}
 from {opacity: 0;}
 to {opacity: 1;}
 }
+
 .jumbotron h1,
 h2 {
   opacity: 0;
@@ -71,6 +74,7 @@ h2 {
 .jumbotron h2 {
   animation-delay: 0.5s;
 }
+
 /****** SECTIONS ******/
 #aboutme h1,
 #portfolio h1,
@@ -80,26 +84,31 @@ h2 {
   font-family: Oswald;
   font-size: 5vmin !important;
 }
+
 h2 {
   font-family: "Quicksand";
   font-size: 3vmin;
 }
+
 h3 {
   letter-spacing: 15px;
   font-size: 5vmin;
 }
+
 body {
   font-family: 'Raleway', sans-serif;
   background-attachment: fixed;
   background-color: #D8D0CD;
   position: relative;
 }
+
 #picme {
   width: auto;
   height: 20vmin;
   border-radius: 50%;
   margin: 0 auto;
 }
+
 #portfolio {
   height: auto;
   margin: auto;
@@ -111,6 +120,7 @@ body {
   background-color: #DFDEE5;
   overflow: hidden;
 }
+
 #aboutme {
   height: 700px;
   margin: auto;
@@ -123,6 +133,7 @@ body {
   color: white;
   overflow: auto;
 }
+
 #contact {
   height: 400px;
   margin: 0 auto;
@@ -133,16 +144,17 @@ body {
   text-align: center;
   background-color: #DFDEE5;
 }
+
 #portfolio p, #contact p{
-  color: black;
   font-size: 20px;
 }
-#portfolio img{
+
+#portfolio > img{
 	width: 300px;
   opacity: 1;
   transition: opacity 0.5s ease;
 }
-#portfolio img:hover{
+#portfolio > img:hover{
   opacity: 0.3;
   transition: opacity 0.5s ease;
 }
@@ -152,46 +164,153 @@ body {
   font-size: 20px;
   padding: 0px 100px 0px 100px;
 }
+
 #credit {
   color: gray;
 }
+
 #dividerwhite {
   margin: 0 25%;
   height: 2px;
   background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, white));
 }
+
 #dividerblack {
   margin: 0 25%;
   height: 2px;
   background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, #723D46));
 }
+
 /* LINK STUFF */
 a{
   color: white;
   transition: color 0.5s ease;
 }
+
 a:hover {
   color: #EC7357;
   transition: color 0.5s ease;
   text-decoration: none;
 }
+
 a:active,
 a:visited {
   color: white;
   transition: color 0.5s ease;
 }
+
+
 .navbar {
   background-color: transparent;
   padding: 0px;
   font-size: 16px;
 }
+
 .navbar-nav > li > a {
   transition: background-color 0.5s ease;
 }
+
 .navbar-nav > li > a:hover {
   transition: background-color 0.5s ease;
   background-color: rgba(0, 0, 0, 0.5);
   color: #EC7357;
+}
+
+/* Img hover */
+.photo-grid {
+	margin: 1em auto;
+	max-width: 800px;
+	text-align: center;
+}
+
+.photo-grid li {
+	display: inline-block;
+	margin: 1em;
+	width: 300;
+}
+
+.photo-grid img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+.photo-grid figure {
+	height: 165px;
+	overflow: hidden;
+	position: relative;
+	width: 300px;
+}
+
+.photo-grid figcaption {
+	background: rgba(0,0,0,0.8);
+	color: white;
+	display: table;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 100;
+}
+
+.photo-grid figcaption p {
+	display: table-cell;
+	font-size: 1.5em;
+	position: relative;
+	top: -40px;
+	width: 300;
+	vertical-align: middle;
+}
+
+
+.photo-grid li:hover figcaption {
+	opacity: 1;
+}
+.photo-grid img {
+	display: block;
+	height: auto;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	transition: all 1s;
+	max-width: 100%;
+}
+
+.photo-grid figcaption p {
+	display: table-cell;
+	font-size: 1.5em;
+	position: relative;
+	top: -40px;
+	width: 300px;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+	vertical-align: middle;
+}
+
+.photo-grid li:hover figcaption p {
+	-moz-transform: translateY(40px);
+	-webkit-transform: translateY(40px);
+	transform: translateY(40px);
+}
+.photo-grid figcaption {
+	background: rgba(0,0,0,0.8);
+	color: white;
+	display: table;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+	-webkit-transition-delay: 100ms;
+	-moz-transition-delay: 100ms;
+	transition-delay: 100ms;
+	z-index: 100;
 }
     </style>
 
@@ -202,7 +321,7 @@ a:visited {
 
   <body>
 
-<link href='https://fonts.googleapis.com/css?family=Raleway:400,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,900' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <!--SCROLLSPY-->
 
@@ -238,15 +357,41 @@ a:visited {
         <div id="dividerblack"></div><br>
         <p>Projects I've done recently.</p>
         
-        <div class=row>  
-        <a href="http://chellybear.github.io/weather.html">
-	<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb1.png"></a>
-        <a href="http://chellybear.github.io/wiki.html"><img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb2.png"></a>
-        <a href="http://chellybear.github.io/quotes.html"><img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb3.png"></a>
-        <a href="http://chellybear.github.io/twitch.html"><img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb4.png"></a>
-        </div>
-        
-        </div>
+<ul class="photo-grid">  
+<li>
+<a href="http://chellybear.github.io/weather.html">
+	<figure>
+		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb1.png" height="165" width="300">
+		<figcaption><p>Simple Weather App</p></figcaption>
+	</figure>
+</a>
+</li>
+<li>
+<a href="http://chellybear.github.io/wiki.html">
+	<figure>
+		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb2.png" height="165" width="300">
+		<figcaption><p>Wikipedia Viewer</p></figcaption>
+	</figure>
+</a>	
+</li>	
+<li>     
+<a href="http://chellybear.github.io/quotes.html">
+	<figure>
+		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb3.png" height="165" width="300">
+		<figcaption><p>Inspirational Quote Generator</p></figcaption>
+		</figure>
+</a>
+</li>
+	
+<li>
+<a href="http://chellybear.github.io/twitch.html">
+<figure>
+		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb4.png" height="165" width="300">
+		<figcaption><p>Twitch Online Streamers</p></figcaption>
+</figure>
+</a>
+</li>
+</ul>
         <div id="aboutme">
         <!--ABOUT ME-->
         <h1>About</h1><br><div id="dividerwhite"></div><br> 
@@ -260,14 +405,14 @@ a:visited {
          <div id="dividerblack"></div><br>
         <h3>
           <a href="https://github.com/chellybear"><i class="fa fa-github"></i></a>
-          <a href="http://facebook.com/rachel.jachin"><i class="fa fa-facebook-official"></i></a>
+          <a href="#"><i class="fa fa-facebook-official"></i></a>
           <a href="#"><i class="fa fa-twitter"></i></a>
         </h3>
       </div>
         
         
       <!--CREDIT-->
-  <div id="credit" align=center>© Rachel J. All rights reserved.</div>
+  <div id="credit" align=center>© Rachel Jae. All rights reserved.</div>
     </div>
 </div>
 </body>
@@ -282,6 +427,7 @@ var scroll_start = 0;
 var changenav = $('#content');
 var offset = changenav.offset();
 var hoverImage = $("#portfolio img");
+
 // make navbar transparent if @ intro, opaque if not
  $(document).scroll(function() { 
       scroll_start = $(this).scrollTop();
@@ -293,6 +439,7 @@ var hoverImage = $("#portfolio img");
           $('.navbar').css("background-color", "transparent");
        }
    });
+
 // handles scroll on intro page
 $("#name").click(function(event) {
     $('html, body').animate({scrollTop: 0}, 800, "swing");
@@ -310,6 +457,7 @@ nav.click(function(event){
          //go to destination
          $('html,body').animate({scrollTop:dest}, 1000,"swing");
      });
+
 // on portfolio ss mouseover, display a message
       //@ sourceURL=pen.js
     </script>
