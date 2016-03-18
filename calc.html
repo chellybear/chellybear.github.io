@@ -215,10 +215,10 @@ out.html("0");
 
 nums.on("click", function(){
   opsOn = false;
-  outString += $(this).text().substring(0,8);
-  equation +=  $(this).text().substring(0,8);
-  lastNum = $(this).text().substring(0,8);
-  out.html(outString.substring(0,8));
+  outString += $(this).text()
+  equation +=  $(this).text()
+  lastNum = $(this).text()
+  out.html(outString);
 });
 
 $('#dec').on("click", function(){
@@ -241,7 +241,7 @@ ops.on("click", function(){
 });
 
 $('#eq').on("click", function(){
-      console.log(equation);
+  console.log(equation);
   equation = equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");  
   equation = eval(equation);
   out.html(equation);
