@@ -197,7 +197,7 @@ a:hover, a:active, a:visited{
 <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
         <script>
-      var ce = $("#clear"); 
+var ce = $("#clear"); 
 var c = $("#clearall");
 var out = $("#output");
 
@@ -237,13 +237,15 @@ ops.on("click", function(){
   equation += $(this).text();
   }
   equation = equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");
-  out.html(eval(equation).toFixed(2));
+  
 });
 
 $('#eq').on("click", function(){
-  console.log(equation);
-  equation = equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");
-  out.html(eval(equation).toFixed(2).substring(0,8));
+      console.log(equation);
+  equation = equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");  
+  equation = eval(equation);
+  out.html(equation);
+
   equation = 0;
   outString = "";
 });
@@ -264,7 +266,6 @@ ce.on("click", function(){
   console.log(equation);
   out.html("0");
 })
-      //@ sourceURL=pen.js
     </script>
 
     
