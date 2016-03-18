@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <title>simple calculator</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+  <style>
+  html, body{
+  background: #FEEAFA;
+  background: -webkit-radial-gradient(at top,#FFFD82,#FFB80);
+  background: -o-radial-gradient(at top,#FFFD82,#FFB80);
+  background: -moz-radial-gradient(at top,#FFFD82,#FFB80);
+  background: radial-gradient(at top,#FFFD82,#FFB805);
+  background-attachment: fixed;
+  background-size: 100%;
+  color: black;
+  font-family: Roboto;
+  font-size: 10px;
+}
+.noselect {
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; 
+}
+#title{
+  position: absolute;
+  font-size: 20px;
+  left: 80px;
+  color: white;
+  font-family: Titillium Web;
+}
+.container{
+  margin: auto;
+  margin-top: 100px;
+  width: 320px;
+  height: 490px;
+  overflow:hidden;
+  background-color: #FF9393;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 20px;
+  box-shadow: 3px 4px 0px 2px #FF4290;
+  position: relative;
+}
+#screen{
+  position: absolute;
+  background-color: white;
+  margin: auto;
+  width: 76%;
+  height: 10%;
+  top: 30px;
+  left: 40px;
+  box-shadow: 0px 0px 5px gray;  
+}
+
+#output{
+  position: absolute;
+  font-size: 20px;
+  top: 10px; 
+  right: 20px;
+  text-align: right;
+  width: 165px;
+  overflow: hidden;
+  font-family: Monda;
+}
+#buttons{
+  position: absolute;
+  /*background-color: white;*/
+  width: 90%;
+  height: 400px;
+  top: 80px;
+  left: 0px;
+}
+span{
+  background-color: white;
+  position: relative;
+  padding: 15px;
+  left: 35px;
+  margin:5px;
+  border-radius: 5px;
+  line-height: 80px;
+  letter-spacing: 10px;
+  font-size: 20px;
+  height: 70px;
+  width: 40px;
+  box-shadow: 4px 5px 0px #68B0AB;
+  transition: all 0.5s ease;
+}
+span:hover{
+  cursor: default;
+  background-color: #FF7272;
+  color: white;
+  transition: all 0.2s ease;
+}
+span:active{
+  box-shadow: 1px 1px 0px #FF7D21;
+  background-color: #FF7272;
+  transition: all 0.2s ease;
+}
+#dec{
+ padding-left: 23px;
+ paddig-right: 20px;
+}
+#eq{
+  left: 35px;
+  padding-right: 47px;
+  padding-left: 45px;
+}
+#clear{
+  display: inline-block;
+  letter-spacing: 0px; !important
+  white-space: normal;
+  width: 114px;
+  height: 54px;
+  margin-top: -20px;
+  left: 34px;
+  top: 4px;
+  line-height: 30px;
+}
+#clearall{
+  display: inline-block;
+  letter-spacing: 0px; !important
+  white-space: normal;
+  width: 50px;
+  height: 54px;
+  margin-top: -20px;
+  line-height: 30px;
+  top: 4px;
+}
+#copyright{
+  font-size: 20px;
+  margin-left: -10px;
+  margin-top: 460px;
+}
+a{
+  color: white;
+}
+a:hover, a:active, a:visited{
+  color: white;
+}
+    </style>
+
+    
+    
+    
+  </head>
+
+  <body>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
+
+<div class="container noselect">
+  <div id="title">Simple Calculator!</div>
+  <div id="screen"><div id="output"></div>
+</div>
+  
+<div id="buttons">
+  <span id=clearall>C</span>
+  <span id=clear>CE</span>
+  <span id="div">÷</span>
+  <br>
+  <span id="num7">7</span>
+  <span id="num8">8</span>
+  <span id="num9">9</span>
+  <span id="mul">×</span>
+  <br>
+  <span id="num4">4</span>
+  <span id="num5">5</span>
+  <span id="num6">6</span>
+  <span id="add">+</span>
+  <br>
+  <span id="num1">1</span>
+  <span id="num2">2</span>
+  <span id="num3">3</span>
+  <span id="sub">−</span>
+  <br>
+  <span id="num0">0</span>
+  <span id="dec">.</span>
+  <span id="eq">=</span>  
+
+</div>
+  <div id = "copyright"><a href="http://chellybear.github.io/"><i class="fa fa-heart"></a></i></div>
+</div>
+    
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+        <script>
+      var ce = $("#clear"); 
+var c = $("#clearall");
+var out = $("#output");
+
+var outString = ""; // our output on screen
+var equation = ""; // our actual equation
+var lastNum = "";
+
+var nums = $('#num1, #num2, #num3, #num4, #num5, #num6, #num7, #num8, #num9, #num0');
+var ops = $('#div, #mul, #sub, #add');
+
+var opsOn = false;
+var decOn = false;
+
+out.html("0");
+
+nums.on("click", function(){
+  opsOn = false;
+  outString += $(this).text().substring(0,8);
+  equation +=  $(this).text().substring(0,8);
+  lastNum = $(this).text().substring(0,8);
+  out.html(outString.substring(0,8));
+});
+
+$('#dec').on("click", function(){
+  if(!decOn){
+    outString += $(this).text();
+    equation += $(this).text();
+    decOn = true;
+  }
+});
+
+ops.on("click", function(){
+  outString = "";
+  if(!opsOn){
+  decOn = false;
+  opsOn = true;
+  equation += $(this).text();
+  }
+  equation = equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");
+  out.html(eval(equation).toFixed(2));
+});
+
+$('#eq').on("click", function(){
+  console.log(equation);
+  equation = equation.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-");
+  out.html(eval(equation).toFixed(2).substring(0,8));
+  equation = 0;
+  outString = "";
+});
+
+// handle clear all
+c.on("click", function(){
+  out.empty();
+  outString = "";
+  equation = 0;
+  out.html("0");
+})
+
+// handle clear entry
+ce.on("click", function(){
+  out.empty();
+  outString = "";
+  equation = equation.replace(lastNum, "");
+  console.log(equation);
+  out.html("0");
+})
+      //@ sourceURL=pen.js
+    </script>
+
+    
+    
+    
+  </body>
+</html>
+ 
