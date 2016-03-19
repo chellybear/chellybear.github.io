@@ -215,9 +215,10 @@ out.html("0");
 
 nums.on("click", function(){
   opsOn = false;
-  outString += $(this).text()
-  equation +=  $(this).text()
-  lastNum = $(this).text()
+  outString += $(this).text();
+  equation +=  parseFloat($(this).text());
+  console.log(equation);
+  lastNum = $(this).text();
   out.html(outString);
 });
 
@@ -246,7 +247,7 @@ $('#eq').on("click", function(){
   equation = eval(equation);
   out.html(equation);
 
-  equation = 0;
+  equation = "";
   outString = "";
 });
 
@@ -254,7 +255,7 @@ $('#eq').on("click", function(){
 c.on("click", function(){
   out.empty();
   outString = "";
-  equation = 0;
+  equation = "";
   out.html("0");
 })
 
