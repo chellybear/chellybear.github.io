@@ -18,12 +18,14 @@
 <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
 
         <style>
-      body {
+body {
   background-color: #427AA1;
 }
+
 b {
   color: #A5BE00;
 }
+
 #title {
   margin: 100px auto auto auto;
   right: 0;
@@ -41,6 +43,7 @@ h1 {
   font-size: 30px;
   margin-bottom: -20px;
   font-family: Raleway !important;
+  color: #A5BE00;
 }
 #container {
   /*contains the results divs*/
@@ -49,8 +52,7 @@ h1 {
   right: 0;
   bottom: 0;
   width: 500px;
-  height: 640px;
-  padding: 0px 50px 50px 50px;
+  padding: 0px 50px 0px 50px;
   font-family: Muli;
   color: #EBF2FA;
   overflow: visible;
@@ -99,16 +101,12 @@ form {
   color: #EBF2FA;
   transition: font 0.3s linear;
 }
-#key:hover,
-#rand:hover {
+#key:hover, #rand:hover {
   color: #A5BE00;
   transition: font 0.3s linear;
 }
-#results0,
-#results1,
-#results2,
-#results3,
-#results4 {
+
+#results {
   background-color: rgba(0, 0, 0, 0.2);
   margin-left: -40px;
   margin-bottom: -15px;
@@ -120,21 +118,14 @@ form {
   animation-fill-mode: forwards;
   animation-duration: 1.0s;
 }
-#results0 {
-  animation-delay: 0.2s;
-}
-#results1 {
-  animation-delay: 0.4s;
-}
-#results2 {
-  animation-delay: 0.6s;
-}
-#results3 {
-  animation-delay: 0.8s;
-}
-#results4 {
-  animation-delay: 1s;
-}
+
+#results0{animation-delay:0.2s};
+#results1{animation-delay:0.4s};
+#results2{animation-delay:0.6s};
+#results3{animation-delay:0.8s};
+#results4{animation-delay:1.0s};
+
+
 a {
   color: #A5BE00;
   text-decoration: none;
@@ -165,7 +156,7 @@ footer {
   color: white;
   font-size: 20px;
 }
-.center {
+.center{
   padding-bottom: 100px;
 }
 
@@ -196,7 +187,7 @@ footer {
 <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 
         <script>
-      $(document).ready(function() {
+$(document).ready(function() {
 
   // hide and show magnifying glass
 /*  $("#input").hide(function() {
@@ -223,14 +214,14 @@ footer {
       $.getJSON("https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=" + val + "&callback=?", function(data) {
         var results = "";
         for (var i = 0; i < data.query.search.length; i++) {
-          if (i < 5) {
+          if (i < 8) {
             var title = JSON.stringify(data
               .query.search[i].title).replace(/["]/g, "");
             var snippet = JSON.stringify(data
               .query.search[i].snippet).replace(/["]/g, "");
             // output results into div boxes (optimize this later)
             results +=
-              "<div id=results" + i + "><a target='_blank' href='http://wikipedia.org/wiki/" +
+              "<div id=results><a target='_blank' href='http://wikipedia.org/wiki/" +
               title + "'><h1>" + title + "</h1></a><br>" +
               snippet + "... </div>";
           }
@@ -242,7 +233,6 @@ footer {
   } // search fn end
 
 }); // end
-      //@ sourceURL=pen.js
     </script>
 
     
