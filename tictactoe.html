@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+
+
+    <title>gimme an x, gimme an o!</title>
+    <link href='https://fonts.googleapis.com/css?family=Flamenco' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+        <style>
+      body, html{
+  background-color: #E55934;
+}
+#screen{
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  top: 0px;
+  z-index:10;
+  display: none;  
+}
+.noselect{
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;   
+  cursor: default;
+}
+#heart{
+  font-size: 20px;
+  margin-left: 5px;
+}
+a,a:hover,a:active,a:visited{
+  color: white;
+  text-decoration: none;
+}
+/*Menu Stuff*/
+#prompt{
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  margin-top: 100px;
+  left: 50px;
+  width: 300px;
+  height: 200px;
+  z-index: 11;
+  border-radius: 0px;
+  display: none;
+}
+#prompt p{
+  color: white;
+  position: absolute;
+  top: 50px;
+  font-size: 16px;
+  left: 100px;
+  font-family: Montserrat;
+}
+#playagain{
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+  margin-top: 100px;
+  left: 50px;
+  width: 300px;
+  height: 150px;
+  z-index: 11;
+  border-radius: 0px;
+  display: none;
+  text-align: center;
+}
+
+#playagain p{
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 50px;
+  left: 75px;
+  font-family: Montserrat;
+}
+
+#x{
+  position: absolute;
+  color: white;
+  top: 90px;
+  left: 90px;
+  font-family: Flamenco;
+  font-size: 40px;
+  color:#E55934;
+  transition: all 0.5s ease;
+}
+#o{
+  position: absolute;
+  color: white;
+  top: 90px;
+  left: 183px;
+  font-family: Flamenco;
+  font-size: 40px;
+  color: #5BC0EB;
+  transition: all 0.5s ease;
+}
+
+#ok{
+  position: absolute;
+  color: white;
+  top: 90px;
+  left: 130px;
+  font-family: Montserrat;
+  font-size: 25px;
+  z-index: 20;
+  transition: all 0.5s ease;
+}
+#ok:hover{
+  color: #FDE74C;
+  transition: all 0.5s ease;
+}
+
+#x:hover, #o:hover{
+  color: white;
+  transform: scale(1.5);
+  transition: all 0.5s ease;
+}
+
+/* Board */
+
+
+#game{
+  position: relative;
+  height: 800px;
+}
+
+#board{
+  margin: auto;
+  margin-top: 20vh;
+  width: 400px;
+  height: 400px;
+  overflow:visible;
+  background-color: #FDE74C;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 20px;
+  position: relative;
+}
+#buttons{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+span{
+  display: inline-block;
+ background-color: white;
+  padding: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  top: 100px;
+  left: 35px;
+  margin:0px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+  font-size: 20px;
+}
+span:hover{
+  background-color:#9BC53D;
+  transition: all 0.2s linear;
+}
+#answerx{
+  position: absolute;
+  margin-top: -45px;
+  margin-left: -15px;
+  font-size: 60px;
+  font-family: Flamenco;
+  color: #E55934;
+  transition: all 0.2s linear;
+}
+
+#answero{
+  position: absolute;
+  margin-top: -45px;
+  margin-left: -17px;
+  font-size: 60px;
+  font-family: Flamenco;
+  color: #5BC0EB;
+}
+
+/* Scorekeeping */ 
+#wins,#losses,#ties{
+  position: absolute;
+  font-family: Montserrat;
+  background-color: none;
+  width: auto;
+  margin: auto;
+  top: 420px;
+  font-size: 20px;
+}
+#wins{
+  left: 50px;
+}
+#losses{
+  left: 160px;
+}
+#ties{
+  left: 300px;
+}
+#wins p, #losses p, #ties p{
+  color: #FDE74C;
+  text-align: center;
+}
+
+
+    </style>
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div id="heart"><a href="http://chellybear.github.io/"<i class="fa fa-heart"></i></a></div>
+<div class="noselect">
+<div id="screen"></div>
+<div class="container" id="board">
+<!--Prompt user for their choices-->
+<div id="prompt">
+    <p>Choose one!<br><br></p>
+    <div id="x">X</div><div id="o">O</div>
+</div>
+<div id="playagain"><p></p>
+  <div id="ok">OK</div>
+</div>
+  
+<div id="buttons">
+  <span id=grid1></span>
+  <span id=grid2></span>
+  <span id=grid3></span>
+  <span id=grid4></span>
+  <span id=grid5></span>
+  <span id=grid6></span>
+  <span id=grid7></span>
+  <span id=grid8></span>
+  <span id=grid9></span>
+</div>
+  
+<div id="wins">Wins<p>0</p></div>
+<div id="losses">Losses<p>0</p></div>
+<div id="ties">Ties<p>0</p></div>
+  
+</div>
+
+</div>
+    
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+        <script>
+      // whole grid
+var grid = $("#grid1, #grid2, #grid3, #grid4, #grid5, #grid6, #grid7, #grid8, #grid9");
+// each spot
+var spots = [$("#grid1"), $("#grid2"), $("#grid3"),
+  $("#grid4"), $("#grid5"), $("#grid6"),
+  $("#grid7"), $("#grid8"), $("#grid9")
+];
+var token = ""; // player
+var other = ""; // cpu
+
+var taken = false; // ai stuff
+var rng, spot; // ai stuff
+
+var turns = 0; // check if the grid is full
+var myTurn; // bool handles if it is player turn
+var won = false; // tie checking
+
+var win = 0;
+var loss = 0;
+var tie = 0;
+
+var h1, h2, h3, v1, v2, v3, d1, d2;
+// handle game start window
+$('#screen').fadeIn();
+$('#prompt').fadeIn("slow");
+$('#x').on("click", function() {
+  token = "x";
+  other = "o";
+  myTurn = true;
+  $('#screen').fadeOut();
+  $('#prompt').fadeOut("slow");
+});
+$('#o').on("click", function() {
+  token = "o";
+  other = "x";
+  myTurn = true;
+  $('#screen').fadeOut();
+  $('#prompt').fadeOut("slow");
+});
+
+
+grid.on("click", function() {
+  // player's turn
+  if (myTurn) {
+    if ($(this).text() == "") {
+      $(this).html("<div id=answer" + token + ">" + token + "</div>");
+      turns++;
+      myTurn = false;
+    } else { // error checking
+      myTurn = true;
+    }
+  }
+  // cpu's turn  
+  if (!myTurn) {
+    taken = false;
+    while (!taken && turns < 9) {
+      // hard mode(cases)
+      // easy mode(rng)
+      console.log("ho");
+      rng = Math.floor(Math.random() * (8 - 0)) + 0;
+      if(spots[rng].text() == ""){    
+        spots[rng].html("<div id=answer" + other + ">" +
+                        other + "</div>");
+       taken = true;
+       turns++;
+      }
+    }
+
+    myTurn = true;
+    taken = false;
+  }
+
+  // handle win/draw/loss
+  // win
+  var winner = checkWin(spots, token);
+  if (winner) {
+    $('#screen').fadeIn();
+    $("#playagain p").text("Aww yeah! You won!");
+    $('#playagain').fadeIn("fast");
+    won = true;
+    win++;
+    $("#wins p").text(win);
+    $('#ok').on("click", function() {
+      for (var i = 0; i < 9; i++) {
+        spots[i].text("");
+        turns = 0;
+        won = false;
+      }
+      $('#playagain').fadeOut("fast");
+      $('#prompt').fadeIn("slow");
+    });
+  }
+  // loss
+  var loser = checkWin(spots, other);
+  if (loser && !won) {
+    $('#screen').fadeIn();
+    $("#playagain p").text("Oh noooo! You lost!");
+    $('#playagain').fadeIn("slow");
+    loss++;
+    $("#losses p").text(loss);
+    $('#ok').on("click", function() {
+      for (var i = 0; i < 9; i++) {
+        spots[i].text("");
+        turns = 0;
+      }
+      $('#screen').fadeIn();
+      $('#playagain').fadeOut("fast");
+      $('#prompt').fadeIn("slow");
+    });
+  }
+  // draw
+  if (turns == 9 && !won) {
+    $('#screen').fadeIn();
+    $("#playagain p").text("Hmmm... It's a tie!");
+    $('#playagain').fadeIn("slow");
+    $('#screen').fadeIn("slow");
+    tie++;
+    $("#ties p").text(tie);
+
+    $('#ok').on("click", function() {
+      for (var i = 0; i < 9; i++) {
+        spots[i].text("");
+        turns = 0;
+      }
+      $('#playagain').fadeOut("fast");
+      $('#prompt').fadeIn("slow");
+    });
+  }
+
+});
+// check horizontal, vertical, diagonal for matching
+function checkWin(spots, p) {
+  if ((spots[0].text() == p && spots[1].text() == p && spots[2].text() == p) ||
+    (spots[0].text() == p && spots[3].text() == p && spots[6].text() == p) ||
+    (spots[0].text() == p && spots[4].text() == p && spots[8].text() == p) ||
+    (spots[2].text() == p && spots[4].text() == p && spots[6].text() == p) ||
+    (spots[1].text() == p && spots[4].text() == p && spots[7].text() == p) ||
+    (spots[2].text() == p && spots[5].text() == p && spots[8].text() == p) ||
+    (spots[3].text() == p && spots[4].text() == p && spots[5].text() == p)) {
+    return true;
+  }
+}
+      //@ sourceURL=pen.js
+    </script>
+
+    
+    
+    
+  </body>
+</html>
+ 
