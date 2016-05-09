@@ -44,6 +44,10 @@
   background-size: cover;
 }
 
+.photo-grid > li {
+  background-color: black;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -142,7 +146,8 @@ body {
   width: 100%;
   position: relative;
   background-color: white;
-  overflow: hidden;
+  overflow: visible;
+  padding-bottom: 50px;
 }
 
 #portfolio > p {
@@ -188,6 +193,27 @@ body {
   float: left;
   width: 400px;
   margin: auto;
+  background-color: gray;
+}
+
+ul {
+  -webkit-padding-start: 0px;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none !important;
+  opacity: 1;
+}
+
+.glyphicon-chevron-left,
+.glyphicon-chevron-right {
+  color: orange;
+  text-shadow: none;
+  padding-top: 50px;
+}
+
+.carousel-indicators li {
   background-color: gray;
 }
 
@@ -275,8 +301,9 @@ a:active {
 
 /* Img hover */
 .photo-grid {
-  margin: 1em auto;
-  max-width: 800px;
+  position: relative;
+  margin: auto;
+  max-width: 600px;
   text-align: center;
   color: white;
 }
@@ -440,33 +467,40 @@ Some code snippets (c) their respective owners, credited in comments. -->
 		<!--PORTFOLIO-->
 		<div id="portfolio">
 			<h1>Portfolio</h1><br>
-			<ul class="photo-grid">
-				<li>
-					<a href="http://chellybear.github.io/weather.html">
-						<figure>
-							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb1.png" height="165" width="300">
-							<figcaption>
-								<p>Simple Weather App</p>
-							</figcaption>
-						</figure>
-					</a>
-				</li>
+			 <div id="carousel" class="carousel slide" data-ride="carousel">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <ul class="photo-grid">
+				<li><a href="http://chellybear.github.io/weather.html">
+				 <figure><img src="	
+https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port1.png" height="165" width="300">
+					<figcaption><p>Quote Generator<br>(Forismatic API)</p><br></figcaption>
+				 </figure>
+				</a>
+				</li>				 
 				<li>
 					<a href="http://chellybear.github.io/wiki.html">
 						<figure>
-							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb2.png" height="165" width="300">
+							<img src="	
+https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port2.png" height="165" width="300" class=img-responsive>
 							<figcaption>
-								<p>Wikipedia Viewer</p>
+								<p>Twitch Streams Checker<br>(Twitch API)</p>
 							</figcaption>
 						</figure>
 					</a>
 				</li>
+			</ul>
+      </div><!--item1-->
+      <div class="item">
+				<ul class="photo-grid">
 				<li>
 					<a href="http://chellybear.github.io/quotes.html">
 						<figure>
-							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb3.png" height="165" width="300">
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port3.png" height="165" width="300">
 							<figcaption>
-								<p>Inspirational Quote Generator</p>
+								<p>Weather App<br>(OpenWeather API)</p>
 							</figcaption>
 						</figure>
 					</a>
@@ -475,14 +509,76 @@ Some code snippets (c) their respective owners, credited in comments. -->
 				<li>
 					<a href="http://chellybear.github.io/twitch.html">
 						<figure>
-							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb4.png" height="165" width="300">
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port4.png" height="165" width="300">
 							<figcaption>
-								<p>Twitch Online Streamers</p>
+								<p>Wikipedia Article Search<br>(Wikipedia API)</p>
 							</figcaption>
 						</figure>
 					</a>
 				</li>
-			</ul>
+				</ul>
+      </div> <!--item2-->
+      <div class="item">
+				<ul class="photo-grid">
+				<li>
+					<a href="http://chellybear.github.io/quotes.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port5.png" height="165" width="300">
+							<figcaption>
+								<p>Simple Calculator</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+
+				<li>
+					<a href="http://chellybear.github.io/twitch.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port6.png" height="165" width="300">
+							<figcaption>
+								<p>Pomodoro Timer</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+				</ul>
+      </div><!--item3-->
+      <div class="item">
+				<ul class="photo-grid">
+				<li>
+					<a href="http://chellybear.github.io/quotes.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port7.png" height="165" width="300">
+							<figcaption>
+								<p>Tic-Tac-Toe</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+
+				<li>
+					<a href="http://chellybear.github.io/twitch.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/pics/port8.png" height="165" width="300">
+							<figcaption>
+								<p>Simon Says...</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+				</ul>
+      </div><!--item4-->
+    </div>
+  </div><!--Carousel-->
+<div class="carousel-controls">
+		<a class="left carousel-control" href="#carousel" data-slide="prev">
+    		<span class="glyphicon glyphicon-chevron-left"></span>
+  		</a>
+
+		<a class="right carousel-control" href="#carousel" data-slide="next">
+    		<span class="glyphicon glyphicon-chevron-right"></span>
+  		</a>
+</div>
 		</div>
 		<div id="aboutme" class="container-fluid">
 			<!--ABOUT ME-->
