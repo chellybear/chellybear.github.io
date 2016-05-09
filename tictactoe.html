@@ -18,6 +18,12 @@
       body, html{
   background-color: #E55934;
 }
+#back{
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  font-size:30px;
+}
 #screen{
   background-color: rgba(0,0,0,0.6);
   position: absolute;
@@ -221,9 +227,9 @@ span:hover{
     
   </head>
 
-  <body>
+  <body translate="no" >
 
-    <div id="heart"><a href="http://chellybear.github.io/"<i class="fa fa-heart"></i></a></div>
+    <div id="back"><a href="http://chellybear.github.io/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a></div>
 <div class="noselect">
 <div id="screen"></div>
 <div class="container" id="board">
@@ -315,9 +321,12 @@ grid.on("click", function() {
   // cpu's turn  
   if (!myTurn) {
     taken = false;
+    // hard mode cases
+    // ...
+    
+    // easy mode(rng)
     while (!taken && turns < 9) {
-      // hard mode(cases)
-      // easy mode(rng)
+
       console.log("ho");
       rng = Math.floor(Math.random() * (8 - 0)) + 0;
       if(spots[rng].text() == ""){    
@@ -402,12 +411,9 @@ function checkWin(spots, p) {
     return true;
   }
 }
-      //@ sourceURL=pen.js
+      //# sourceURL=pen.js
     </script>
 
-    
-    
-    
   </body>
 </html>
  
