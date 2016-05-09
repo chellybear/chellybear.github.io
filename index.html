@@ -3,21 +3,19 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <meta name="google" value="notranslate">
 
 
-    <title>hello, world!</title>
+    <title>Portfolio</title>
     <!--Import stuff-->
-<link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
-</script>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Helvetica+Neue' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
     
     
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
@@ -25,34 +23,51 @@
         <style>
       /****** HEADER STUFF ******/
 #tophead {
-  background: url('http://i.imgur.com/NSLbCwn.png') 
-    50% 0 repeat fixed;
-  background-color: rgba(255, 0, 0, 0.5);
+  background: url("https://s3-us-west-2.amazonaws.com/codepenchelly/pexels-photo.jpg") 100% 0 repeat fixed;
+  background-color: white;
   height: 100vh;
+  padding-bottom: 100px;
   margin: auto;
   width: 100%;
   position: relative;
-  font-size: 50px;
   text-align: center;
-  text-shadow: 0px 3px 3px black;
   font-family: "Raleway";
   color: white;
+  background-size: cover;
+  display: inline-block;
+}
+
+#deco {
+  background: url("https://s3-us-west-2.amazonaws.com/codepenchelly/landscape-nature-clouds-cloudy.jpg") 100% 0 repeat fixed;
+  height: 400px;
+  width: 100%;
   background-size: cover;
 }
 
 @-webkit-keyframes fadeIn {
-from {opacity: 0;}
-to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @-moz-keyframes fadeIn {
-from {opacity: 0;}
-to{opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fadeIn {
-from {opacity: 0;}
-to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 .jumbotron h1,
 h2 {
   opacity: 0;
@@ -66,73 +81,114 @@ h2 {
   -moz-animation-duration: 1s;
   animation-duration: 1s;
 }
+
 .jumbotron h1 {
-  font-size: 10vmin;
-  padding-top: 35vmin;
-  text-shadow: 0px 2px 10px black;
+  font-size: 85px;
+  padding-top: 10%;
 }
+
 .jumbotron h2 {
+  font-size: 20px;
   animation-delay: 0.5s;
 }
 
 /****** SECTIONS ******/
 #aboutme h1,
 #portfolio h1,
-#contact h1 {
+#contact h1,
+#blog h1 {
   text-transform: uppercase;
+  font-weight: 700;
   margin: auto;
-  font-family: Oswald;
-  font-size: 5vmin !important;
+  font-family: Montserrat;
+  font-size: 40px;
+  color: #66666;
+  text-align: center;
+  padding-top: 50px;
 }
 
 h2 {
   font-family: "Quicksand";
-  font-size: 3vmin;
+  font-size: 3vmax;
 }
 
 h3 {
   letter-spacing: 15px;
-  font-size: 5vmin;
-  text-shadow: 1px 1px 2px black;
+  font-size: 30px;
 }
 
 body {
   font-family: 'Raleway', sans-serif;
   background-attachment: fixed;
-  background-color: #D8D0CD;
+  background-color: #DDDDDD;
   position: relative;
+  text-align: center;
 }
 
 #picme {
-  width: auto;
-  height: 20vmin;
-  border-radius: 50%;
+  width: 200px;
+  height: auto;
   margin: 0 auto;
+  transform: scaleX(-1);
+  filter: flipH;
+  border-radius: 20px;
+  margin-top: 50px;
+  overflow: hidden;
 }
 
 #portfolio {
   height: auto;
   margin: auto;
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
   position: relative;
-  text-align: center;
-  background-color: #DFDEE5;
+  background-color: white;
   overflow: hidden;
+}
+
+#portfolio > p {
+  margin-top: -20px;
+  font-family: Helvetica Neue;
+  font-style: italic;
+  font-weight: 400;
+  color: gray;
+  font-size: 30px;
 }
 
 #aboutme {
   height: 700px;
   margin: auto;
-  padding: 50px;
-  width: 100%;
-  max-width: 1920px;
+  padding-right: 50px;
+  padding-left: 50px;
+  max-width: 800px;
   position: relative;
   text-align: center;
-  background-color: #B76878;
-  color: white;
-  overflow: auto;
+  background-color: #DDDDDD;
+  display: inline-block;
+}
+
+.row {
+  text-align: center;
+  color: #66666;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  padding: 0px 50px 0px 50px;
+}
+
+#blog {
+  background-color: white;
+  max-width: 100%;
+  height: 300px;
+  font-family: Roboto Slab;
+  font-size: 16px;
+}
+
+#tt {
+  position: relative;
+  display: none;
+  float: left;
+  width: 400px;
+  margin: auto;
+  background-color: gray;
 }
 
 #contact {
@@ -146,24 +202,19 @@ body {
   background-color: #DFDEE5;
 }
 
-#portfolio p, #contact p{
+#portfolio p, #contact p {
   font-size: 20px;
 }
 
-#portfolio > img{
-	width: 300px;
+#portfolio > img {
+  width: 300px;
   opacity: 1;
   transition: opacity 0.5s ease;
 }
-#portfolio > img:hover{
+
+#portfolio > img:hover {
   opacity: 0.3;
   transition: opacity 0.5s ease;
-}
-#aboutme p{
-  text-align: center;
-  color: white;
-  font-size: 20px;
-  padding: 0px 100px 0px 100px;
 }
 
 #credit {
@@ -183,136 +234,157 @@ body {
 }
 
 /* LINK STUFF */
-a{
-  color: white;
+a {
+  color: black;
   transition: color 0.5s ease;
 }
 
 a:hover {
-  color: #EC7357;
+  color: orange;
   transition: color 0.5s ease;
   text-decoration: none;
 }
 
-a:active,
-a:visited {
-  color: white;
+a:active {
+  color: black;
   transition: color 0.5s ease;
 }
-
 
 .navbar {
   background-color: transparent;
   padding: 0px;
-  font-size: 16px;
+  font-size: 20px;
+  transition: font-size 0.1s ease, background-color 0.5s ease;
+}
+
+.navbar-brand {
+  color: white;
 }
 
 .navbar-nav > li > a {
-  transition: background-color 0.5s ease;
+  color: white;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
 }
 
 .navbar-nav > li > a:hover {
   transition: background-color 0.5s ease;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #EC7357;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: black;
 }
 
 /* Img hover */
 .photo-grid {
-	margin: 1em auto;
-	max-width: 800px;
-	text-align: center;
+  margin: 1em auto;
+  max-width: 800px;
+  text-align: center;
+  color: white;
 }
 
 .photo-grid li {
-	display: inline-block;
-	margin: 1em;
-	width: 300;
+  display: inline-block;
+  margin: 1em;
+  width: 300;
 }
 
 .photo-grid img {
-	display: block;
-	height: auto;
-	max-width: 100%;
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
 
 .photo-grid figure {
-	height: 165px;
-	overflow: hidden;
-	position: relative;
-	width: 300px;
+  height: 165px;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
 }
 
 .photo-grid figcaption {
-	background: rgba(0,0,0,0.8);
-	color: white;
-	display: table;
-	height: 100%;
-	left: 0;
-	opacity: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: table;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
 }
 
 .photo-grid figcaption p {
-	display: table-cell;
-	font-size: 1.5em;
-	position: relative;
-	top: -40px;
-	width: 300;
-	vertical-align: middle;
+  display: table-cell;
+  font-size: 1.5em;
+  position: relative;
+  top: -40px;
+  width: 300;
+  vertical-align: middle;
+  color: white;
 }
-
 
 .photo-grid li:hover figcaption {
-	opacity: 1;
+  opacity: 1;
 }
+
 .photo-grid img {
-	display: block;
-	height: auto;
-	-webkit-transition: all 1s;
-	-moz-transition: all 1s;
-	transition: all 1s;
-	max-width: 100%;
+  display: block;
+  height: auto;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+  max-width: 100%;
 }
 
 .photo-grid figcaption p {
-	display: table-cell;
-	font-size: 1.5em;
-	position: relative;
-	top: -40px;
-	width: 300px;
-	-webkit-transition: all 300ms ease-out;
-	-moz-transition: all 300ms ease-out;
-	transition: all 300ms ease-out;
-	vertical-align: middle;
+  display: table-cell;
+  font-size: 1.5em;
+  position: relative;
+  top: -40px;
+  width: 300px;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+  vertical-align: middle;
+  font-family: Raleway;
+  font-style: normal;
 }
 
 .photo-grid li:hover figcaption p {
-	-moz-transform: translateY(40px);
-	-webkit-transform: translateY(40px);
-	transform: translateY(40px);
+  -moz-transform: translateY(40px);
+  -webkit-transform: translateY(40px);
+  transform: translateY(40px);
 }
+
 .photo-grid figcaption {
-	background: rgba(0,0,0,0.8);
-	color: white;
-	display: table;
-	height: 100%;
-	left: 0;
-	opacity: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	-webkit-transition: all 300ms;
-	-moz-transition: all 300ms;
-	transition: all 300ms;
-	-webkit-transition-delay: 100ms;
-	-moz-transition-delay: 100ms;
-	transition-delay: 100ms;
-	z-index: 100;
+  font-family: Raleway;
+  font-style: normal;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: table;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  -webkit-transition-delay: 100ms;
+  -moz-transition-delay: 100ms;
+  transition-delay: 100ms;
+  z-index: 100;
 }
+
+i {
+  color: white;
+}
+
+i:hover {
+  color: orange;
+}
+
     </style>
 
     
@@ -320,132 +392,135 @@ a:visited {
     
   </head>
 
-  <body>
+  <body translate="no" >
 
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,900' rel='stylesheet' type='text/css'>
+    <!-- Layout looks best in Chrome!
+Overall site design (c) me.
+Some code snippets (c) their respective owners, credited in comments. -->
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,900' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <!--SCROLLSPY-->
 
 <body data-spy="scroll" data-target=".navbar" data-offset="30">
-  <nav class="navbar navbar-fixed-top" id="main">
-    <!--NAVIGATION-->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span></button>
-      <!--LOGO-->
-      <a class="navbar-brand" href="#" id="name"><b>rachel j.</b></a>
-    </div>
-    <!--NAV TAB-->
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav" id=navbar-1>
-        <li><a id="portfolio-tab" href="#portfolio">Portfolio</a></li>
-        <li><a id="aboutme-tab" href="#aboutme">About</a> </li>
-        <li><a id="contact-tab" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-  <!--MAIN HEADER-->
-  <div id="tophead" class="jumbotron">
-    <div id="fill" data-type=background>
-      <h1 id=headtext><b>RACHEL J.</b></h1>
-      <div id = "dividerwhite"></div>
-      <h2>Hi. I make things.</2>
-      <h3>
+	<nav class="navbar navbar-fixed-top" id="main" role="navigation">
+		<!--NAVIGATION-->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target="#myNavbar">
+          <i class="fa fa-2x fa-bars" aria-hidden="true"></i></button>
+			<!--LOGO-->
+			<a class="navbar-brand" href="#" id="name"><b>rachel j.</b></a>
+		</div>
+		<!--NAV TAB-->
+		<div class="collapse navbar-collapse" id="myNavbar">
+
+			<ul class="nav navbar-nav" id=myNavbar>
+				<li><a id="portfolio-tab" href="#portfolio">Portfolio</a></li>
+				<li><a id="aboutme-tab" href="#aboutme">About</a></li>
+				<li><a id="contact-tab" href="#contact">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<!--MAIN HEADER-->
+	<div id="tophead" class="jumbotron">
+		<div id="fill" data-type=background>
+			<h1 id=headtext><b>RACHEL J.</b></h1>
+			<div id="dividerwhite"></div>
+			<h2>Student | Artist | Coder</h2>
+			<br>
+			<h3>
           <a href="https://github.com/chellybear"><i class="fa fa-github"></i></a>
-          <a href="http://facebook.com/rachel.jachin"><i class="fa fa-facebook-official"></i></a>
+          <a href="#"><i class="fa fa-facebook-official"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+			</h3></br>
+		</div>
+	</div>
+	<div id="content">
+		<!--PORTFOLIO-->
+		<div id="portfolio">
+			<h1>Portfolio</h1><br>
+			<ul class="photo-grid">
+				<li>
+					<a href="http://chellybear.github.io/weather.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb1.png" height="165" width="300">
+							<figcaption>
+								<p>Simple Weather App</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+				<li>
+					<a href="http://chellybear.github.io/wiki.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb2.png" height="165" width="300">
+							<figcaption>
+								<p>Wikipedia Viewer</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+				<li>
+					<a href="http://chellybear.github.io/quotes.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb3.png" height="165" width="300">
+							<figcaption>
+								<p>Inspirational Quote Generator</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+
+				<li>
+					<a href="http://chellybear.github.io/twitch.html">
+						<figure>
+							<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb4.png" height="165" width="300">
+							<figcaption>
+								<p>Twitch Online Streamers</p>
+							</figcaption>
+						</figure>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="aboutme" class="container-fluid">
+			<!--ABOUT ME-->
+			<h1>About</h1><br><br>
+			<p><div class="row">
+			<div class="col-md-6"><img src="https://s3-us-west-2.amazonaws.com/codepenchelly/aaaa.jpg" id="picme"></img></div>
+<div class="col-md-6">
+<br>Hello, I'm Rachel!<br> I'm a student and digital artist living in Orange County, California. I'm currently majoring in Computer Science/Engineering. <br><br>Currently, I'm using resources
+				like <a href="https://www.udemy.com/">Udemy</a>, <a href="http://freecodecamp.com/">FreeCodeCamp</a>, and <a href="https://www.edx.org/">edX</a> to improve my skills when I'm not taking classes. I also like to try and reverse-engineer sites I've come across online, in the hopes that I'll learn something new on the way!<br><br>My goal is to learn UI/UX development and design, since I love art as much as I love programming! I hope to use the skills I pick up to help design responsive websites/applications for non-profits, and maybe some game menu design on the side. :)</div>
+			</div>
+			</p>
+
+			<br>
+		</div>
+		<!--BLOG-->
+		<div id="blog"><h1>Blog</h1>
+			<div id="tt" class="container"></div>
+			<br></div>
+		<!--CONTACT-->
+		<div id="contact">
+			<h1>Contact</h1><br>
+			<h3>
+          <a href="https://github.com/chellybear"><i class="fa fa-github"></i></a>
+          <a href="#"><i class="fa fa-facebook-official"></i></a>
           <a href="#"><i class="fa fa-twitter"></i></a>
         </h3>
-        </div>
-  </div>  
-      <div id = "content">
-      <!--PORTFOLIO-->
-      <div id="portfolio"> 
-        <h1>Portfolio</h1><br>
-        <div id="dividerblack"></div><br>
-        <p>Projects I've done recently.</p>
-        
-<ul class="photo-grid">  
-<li>
-<a href="http://chellybear.github.io/weather.html">
-	<figure>
-		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb1.png" height="165" width="300">
-		<figcaption><p>Simple Weather App</p></figcaption>
-	</figure>
-</a>
-</li>
-<li>
-<a href="http://chellybear.github.io/wiki.html">
-	<figure>
-		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb2.png" height="165" width="300">
-		<figcaption><p>Wikipedia Viewer</p></figcaption>
-	</figure>
-</a>	
-</li>	
-<li>     
-<a href="http://chellybear.github.io/quotes.html">
-	<figure>
-		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb3.png" height="165" width="300">
-		<figcaption><p>Inspirational Quote Generator</p></figcaption>
-		</figure>
-</a>
-</li>
-	
-<li>
-<a href="http://chellybear.github.io/twitch.html">
-<figure>
-		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb4.png" height="165" width="300">
-		<figcaption><p>Twitch Online Streamers</p></figcaption>
-</figure>
-</a>
-</li>
-
-<li>
-<a href="http://chellybear.github.io/calc.html">
-<figure>
-		<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb5.png" height="165" width="300">
-		<figcaption><p>Simple Calculator</p></figcaption>
-</figure>
-</a>
-</li>
-
-<li>
-<a href="http://chellybear.github.io/tictactoe.html">
-<figure>
-	<img src="https://s3-us-west-2.amazonaws.com/codepenchelly/thmb6.png" height="165" width="300">
-	<figcaption><p>Tic-Tac-Toe</p></figcaption>
-</figure>	
-</a>	
-</li>
-
-</ul>
-        <div id="aboutme">
-        <!--ABOUT ME-->
-        <h1>About</h1><br><div id="dividerwhite"></div><br> 
-        <p><img class=img-responsive src="http://i.imgur.com/w4ADRvK.png" id="picme"></img><br>Hey!<br> I'm a student and digital artist living in SoCal. I'm currently majoring in Computer Science/Engineering. Currently, I'm using resources like <a href="https://www.udemy.com/">Udemy</a>, <a href="http://freecodecamp.com/">FreeCodeCamp</a>, and old-fashioned experimenting-with-stuff-in-Codepen to hone my web development skills as well.<br><br>In my free time, I like doing art commissions and hanging out with my dog, Jake!
-        </p>
-        <br>
-      </div>
-      <!--CONTACT-->
-      <div id="contact"> 
-       <h1>Contact</h1><br>
-         <div id="dividerblack"></div><br>
-        <h3>
-          <a href="https://github.com/chellybear"><i class="fa fa-github"></i></a>
-          <a href="http://facebook.com/rachel.jachin"><i class="fa fa-facebook-official"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-        </h3>
-        Questions or comments? Just want to say hi? Drop me an <a href="mailto:rjachin00@gmail.com" style="color: #B76878">email</a>!
-      </div>
-        
-        
-      <!--CREDIT-->
-  <div id="credit" align=center>© Rachel J. All rights reserved.</div>
-    </div>
-</div>
+		</div>
+		<!--DECO-->
+		<div id="deco" align=center></div>
+		<!--CREDIT-->
+		<div id="credit" align=center>© Rachel Jachin. All rights reserved.</div>
+	</div>
+	</div>
 </body>
     
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
 
         <script>
       var nav = $("ul.navbar-nav a"); 
@@ -453,23 +528,52 @@ var brand = $("navbar-brand");
 var scroll_start = 0;
 var changenav = $('#content');
 var offset = changenav.offset();
-var hoverImage = $("#portfolio img");
+var url = "https://api.tumblr.com/v2/blog/chellybon.tumblr.com/posts/text?api_key=C15eQTKZ2rQXYvAV4YKPas4HH8MtUyUfiR7L5c6kPQ52HhjuVT";
+// tumblr api call
+$.ajax({
+    url: url,
+    dataType: 'jsonp',
+    success: function(results){
+			  var sums = results.response.posts;
+				for(var i = 0; i < sums.length; i++){
+				$('#blog').append('<a href="' + results.response.posts[i]["short_url"] +
+													'">' + results.response.posts[i]["summary"] + "</a><br>");
+				}
+		// TODO: display blogpost dates.	
+    /*$('#blog a').hover(function(){
+			$('#tt').html('yo');
+      $('#tt').show();
+		}, 
+			function() {
+			$('#tt').html('');
+      $('#tt').hide();
+    }); */
+    }
+});
+
 
 // make navbar transparent if @ intro, opaque if not
  $(document).scroll(function() { 
       scroll_start = $(this).scrollTop();
       if(scroll_start > offset.top - 50) {
           // do this if we scroll past intro screen
-          $(".navbar").css({"background-color": "#723D46"});                   
+          $(".navbar").css({"background-color": "#353535",
+													  "font-size": "16px"});                   
           // do this if we are at intro screen
-       } else {
-          $('.navbar').css("background-color", "transparent");
        }
+	 		else {
+          $('.navbar').css({"background-color": "transparent",
+													  "font-size": "20px"});
+       }
+	 
+//if(scroll_start > offset.top - 80) {
+//	console.log("hi");
+//}
    });
 
 // handles scroll on intro page
 $("#name").click(function(event) {
-    $('html, body').animate({scrollTop: 0}, 800, "swing");
+    $('html, body').animate({scrollTop: 0}, 800, "easeInOutQuint");
 });
 // handles scroll on clicking nav links
 nav.click(function(event){
@@ -482,11 +586,11 @@ nav.click(function(event){
               dest = $(this.hash).offset().top;
          }
          //go to destination
-         $('html,body').animate({scrollTop:dest}, 1000,"swing");
+         $('html,body').animate({scrollTop:dest}, 1000,"easeInOutQuint");
      });
 
 // on portfolio ss mouseover, display a message
-      //@ sourceURL=pen.js
+      //# sourceURL=pen.js
     </script>
 
     
