@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+
+
+    <title>pomodoro timer</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+    
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+        <style>
+      .noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+}
+
+#back {
+  position: fixed;
+  top: 0px;
+  left: 10px;
+  font-size: 30px;
+}
+
+a, a:hover {
+  color: white;
+}
+
+body {
+  background-color: #F4A261;
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+.container-fluid {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  background: none;
+  text-align: center;
+  color: white;
+  background-color: #e76f51;
+  border-radius: 50%;
+}
+.container-fluid h1 {
+  font-size: 25px;
+  font-family: Open Sans Condensed;
+}
+
+#screen {
+  font-family: Lato;
+  font-size: 100px;
+  margin-top: 70px;
+}
+
+.fa-angle-up {
+  position: absolute;
+  top: 70px;
+  transition: all 0.2s linear;
+}
+
+.fa-angle-down {
+  position: absolute;
+  top: 190px;
+  transition: all 0.2s linear;
+}
+
+.fa-angle-up:hover, .fa-angle-down:hover {
+  color: white;
+  transform: scale(1.2);
+  transition: all 0.2s linear;
+}
+
+#incM .fa-angle-up, #incM .fa-angle-down {
+  left: 72px;
+}
+
+#incS .fa-angle-up, #incS .fa-angle-down {
+  left: 212px;
+}
+
+#settings {
+  position: absolute;
+  letter-spacing: 40px;
+  left: 190px;
+  top: 220px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+#settings:hover {
+  color: white;
+  transition: all 0.2s ease;
+}
+
+#playtext, #pausetext {
+  position: absolute;
+  top: 228px;
+  left: 220px;
+  font-family: Open Sans Condensed;
+  font-size: 20px;
+  opacity: 0;
+}
+
+#play {
+  position: absolute;
+  left: -50px;
+}
+
+#pause {
+  position: absolute;
+  left: -50px;
+  top: auto;
+  opacity: 0;
+}
+
+#title {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  top: 30px;
+  left: 50px;
+  font-family: Open Sans Condensed;
+  font-size: 25px;
+  letter-spacing: 2px;
+}
+
+#reset {
+  position: absolute;
+  top: 255px;
+  left: 135px;
+  transition: all 0.2s ease;
+}
+
+#reset:hover {
+  color: white;
+  transition: all 0.2s ease;
+}
+
+    </style>
+
+    
+    
+    
+  </head>
+
+  <body translate="no" >
+
+    <div id="back">
+  <a href="http://chellybear.github.io/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a>
+</div>
+<div class="noselect">
+  <div class="container-fluid">
+    <div id="timerbg"></div>
+    <div id="screen"></div>
+    <div id="incM">
+      <i class="fa fa-2x fa-angle-up" id="inc"></i><i class="fa fa-2x fa-angle-down" id="dec"></i>
+    </div>
+    <div id="incS">
+      <i class="fa fa-2x fa-angle-up" id="inc"></i><i class="fa fa-2x fa-angle-down" id="dec"></i>
+    </div>
+    <div id="settings">
+      <i class="fa fa-2x fa-play" id="play"></i><i class="fa fa-2x fa-pause" id="pause"></i>
+    </div>
+    <div id="title">
+      pomodoro<b>clock</b>
+    </div>
+    <div id="reset">
+      reset
+    </div>
+  </div>
+</div>
+    
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+
+        <script>
+      var min = 25;
+var sec = 0;
+var mStr, sStr;
+var intv;
+var aud = new Audio('https://s3-us-west-2.amazonaws.com/codepenchelly/Music_Box-Big_Daddy-1389738694.mp3');
+/******************************
+*       Reset Timer           *
+*******************************/
+$('#reset').click(function(){
+  min = 0;
+  sec = 0;
+  output(min, sec, mStr, sStr);
+});
+/******************************
+*       Set Minutes           *
+*******************************/
+$('#incM #inc').click(function(){
+  min++;
+  output(min, sec, mStr, sStr);
+});
+$('#incM #dec').click(function(){
+  if(min > 0){
+     min--;
+  }
+  output(min, sec, mStr, sStr);
+});
+/******************************
+*       Set Seconds           *
+*******************************/
+$('#incS #inc').click(function(){
+  sec++;
+  if(sec > 59){
+    min++;
+    sec = 0;
+  }
+  output(min, sec, mStr, sStr);
+});
+
+$('#incS #dec').click(function(){
+  sec--;
+  if(sec < 0 && min > 0){
+    min--;
+    sec = 59;
+  }
+  else if(sec < 0 && min == 0){
+    sec = 0;
+  }
+  output(min, sec, mStr, sStr);
+});
+// first run output
+output(min, sec, mStr, sStr);
+
+/******************************
+*       Play/Pause            *
+*******************************/
+var clicked = true;
+$('#settings').click(function(){
+    if(clicked){
+    $('#play').css("opacity", "0");
+    $('#pause').css("opacity", "1");
+    clicked = false;
+    intv = setInterval(function(){
+    sec--;
+    if(sec < 0 && min > 0){
+      min--;
+      sec = 59;
+    }
+    else if(sec < 0 && min == 0){
+      sec = 0;
+    }
+    if(min == 0 && sec == 0){
+      aud.play();
+      $('#play').css("opacity", "1");
+      $('#pause').css("opacity", "0");
+      clicked = true;
+      clearInterval(intv);
+    }
+      output(min, sec, mStr, sStr);
+    }, 1000);
+    
+    }
+    else{
+      $('#play').css("opacity", "1");
+      $('#pause').css("opacity", "0");
+      clicked = true;
+      clearInterval(intv);  
+    }
+});
+
+/******************************
+*       Functions             *
+*******************************/
+function output(min, sec, mStr, sStr){
+  min < 10 ? mStr = "0" + min : mStr = min;
+  sec < 10 ? sStr = "0" + sec : sStr = sec;
+  $('#screen').html(mStr + ":" + sStr);
+}
+      //# sourceURL=pen.js
+    </script>
+
+    
+    
+    
+  </body>
+</html>
+ 
