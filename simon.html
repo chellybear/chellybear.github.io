@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+
+
+    <title>CodePen - Simon</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+    
+    
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+
+        <style>
+      @import
+url(https://fonts.googleapis.com/css?family=Fjalla+One);
+@import
+url(https://fonts.googleapis.com/css?family=Montserrat);
+#back{
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  font-size:30px;
+}
+a,a:hover{
+  color: white;
+}
+body{
+  background-color: #444;
+}
+#screen{
+  position: absolute;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1
+}
+
+.container{
+  width: 500px;
+  height: 500px;
+  background-color: none;
+  position: relative;
+  margin-top: 15vh;
+  overflow: visible;
+}
+#b1,#b2,#b3,#b4{
+  position: absolute;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  width: 210px;
+  height: 210px;
+  opacity: 0.4;
+  transition: all 0.7s ease;
+}
+#b1:hover,#b2:hover,#b3:hover,#b4:hover{
+  opacity: 1;
+  transition: all 0.7s ease;
+}
+
+#b1{
+  background-color: #1BE7FF;
+  top: 35px;
+  left: 45px;
+  -moz-border-radius: 100% 0 0 0;
+  border-radius: 100% 10% 10% 10%;
+}
+#b2{
+  background-color: #6EEB83;
+  top: 255px;
+  left: 45px;
+  -moz-border-radius: 10% 10% 10% 100%;
+  border-radius: 10% 10% 10% 100%;  
+}
+#b3{
+  background-color: #E4FF1A;
+  top: 35px;
+  left: 265px;
+  -moz-border-radius: 10% 100% 10% 10%;
+  border-radius: 10% 100% 10% 10%;
+}
+#b4{
+  background-color: #FF5714;
+  top: 255px;
+  left: 265px;
+  -moz-border-radius: 10% 10% 100% 10%;
+  border-radius: 10% 10% 100% 10%;  
+}
+#title{
+  position: absolute;
+  top: -80px;
+  left: 200px;
+  font-family: Montserrat;
+  font-size: 38px;
+  color: white;
+
+}
+#switch{
+  position: absolute;
+  width: 20px;
+  height: 40px;
+  background-color: gray;
+  border-radius: 10px;
+  left: 200px;
+  top: -20px;
+}
+
+#ball, #light{
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 3px;
+  margin-top: 3px;
+  transition: all 0.2s ease;
+}
+
+#on, #off, #start, #strict{
+  position: absolute;
+  color: white;
+  left: 180px;
+  font-family: Fjalla One;
+  font-size: 10px;
+}
+
+#off{
+  top: -18px;
+}
+#on{
+  top: 5px;
+}
+#start{
+  width: auto;
+  height: auto;
+  background-color: gray;
+  left: 240px;
+  top: -10px;
+  font-size: 12px;
+  border-style: none;
+  border-radius: 5px;
+  opacity: 0.5;
+}
+#strict{
+  left: 300px;
+  top: -18px;
+}
+#light{
+  left: 302px;
+  top: -3px;
+}
+#points{
+  position: absolute;
+  color: white;
+  width: 50px;
+  left: 235px;
+  top: 10px;
+  font-family: Fjalla One;
+  font-size: 40px;
+  text-align: center;
+}
+    </style>
+
+    
+    
+    
+  </head>
+
+  <body translate="no" >
+
+    <div id="back">
+  <a href="http://chellybear.github.io/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></a></div>
+</div>
+<div class="container">
+  <div id="b1"></div>
+  <div id="b2"></div>
+  <div id="b3"></div>
+  <div id="b4"></div>
+  <div id="title">
+    Simon
+  </div>
+  <div id="switch">
+    <div id="ball"></div>
+  </div>
+  <div id="on">
+    ON
+  </div>
+  <div id="off">
+    OFF
+  </div>
+  <button id="start">START</button>
+  <div id="strict">
+    STRICT
+  </div>
+  <div id="light"></div>
+  <div id="points">
+    0
+  </div>
+</div>
+    
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+
+        <script>
+      var aud1 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+    aud2 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+    aud3 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+    aud4 = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+
+var aud = [aud1, aud2, aud3, aud4];
+var cpu = [], player = [];
+
+var off = true, started = false, strict = false;
+
+var rng, intv, clicks = 0, pts = 0;
+
+/*************************
+*     ON / OFF           * 
+*************************/
+$('#ball').click(function(){
+  if(off){ // if ball is clicked change this to ON
+    off = false;
+    $('#ball').css("margin-top", "23px");
+    $('#start').css({"opacity":"1"}); 
+  } 
+  else if(!off){ // if ball is clicked change this to OFF
+    off = true;
+    $('#ball').css({"margin-top":"3px"});
+    $('#start').css({"opacity":"0.5"});
+    cpu = [];
+    player = [];
+    clicks = 0;
+    strict = false;
+    pts = 0;
+    $('#points').html(pts);
+    clearInterval(intv);
+    $('#light').css({"background-color": "white"});
+  }
+});
+
+/*************************
+*     Start Game         * 
+*************************/
+$('#start').click(function(){ 
+  if(off){
+    return;
+  }
+  else{
+    start();
+  }
+});
+
+$('#light').click(function(){
+  if(off){
+    return;
+  }
+  else{
+    if(!strict){
+      $('#light').css({"background-color": "lime"});
+      strict = true;
+    }
+    else{
+      $('#light').css({"background-color": "white"});
+      strict = false;
+    }
+  }
+});
+
+$('#b1, #b2, #b3, #b4').hover(function(){
+  $(this).css("opacity", "1");
+}, function(){
+  $(this).css("opacity", "0.4");
+});
+
+/*************************
+*    Functions           * 
+*************************/
+// start the game when start is clicked
+function start(){
+  cpu = [];
+  player = [];
+  clicks = 0;
+  clearInterval(intv);
+  pts = 0;
+  $('#points').html(pts);
+  cpuTurn(); // cpu goes first
+}
+
+function cpuTurn(){ // cpu's turn
+  rng = Math.floor(Math.random() * (4 - 0)) + 0;
+  cpu.push(rng);
+  animate(cpu); // play sound/lights for cpu choice
+  clicks = 0; // clear num clicks for our next turn
+  player = []; // clear player array for our next turn
+}
+
+function animate(cpu){
+  var i = 0;
+  intv = setInterval(function(){
+  var cpuC = cpuColor(cpu[i]); // store local variable for cpu's choice
+  // animate 
+  $(cpuC).css("opacity", "1");
+      setTimeout(function(){
+      $(cpuC).css("opacity", "0.4"); 
+    }, 400);
+    aud[cpu[i]].play();
+    i++;  
+    if(i >= cpu.length){
+      clearInterval(intv);
+      boardOn(); // my turn
+    }
+  }, 600);
+}
+
+function myTurn(){ // my turn
+  var pChoice = getColor(this.id); // b#
+  
+  // keep going if all correct & can still go through cpu array
+  if(correct(clicks) && clicks < cpu.length - 1){
+    clicks++;
+    boardOff();
+    boardOn();
+  }
+  // if all correct and we are at 20, win and reset
+  else if(correct(clicks) && player.length == cpu.length){
+    if(cpu.length >= 20){
+      win();
+    }
+    pts++;
+    $('#points').html(pts);
+    boardOff();
+    setTimeout(cpuTurn, 600);
+  }
+  // if on strict mode and wrong, reset cpu array and do new combo
+  else if(!correct(clicks) && strict){
+    alert("Wrong! New combo!");
+    var orig = cpu.length; // save cpu's original length before messing up
+    cpu = [];
+    clicks = 0;
+    for(var i = 0; i < orig; i++){
+      rng = Math.floor(Math.random() * (4 - 0)) + 0;
+      cpu.push(rng);
+    }
+    
+    player = [];
+    boardOff();
+    setTimeout(function() {
+      animate(cpu);
+    }, 600);
+  }
+  // else if easy mode, just replay button and clear player array
+  else if(!correct(clicks)){
+    player = [];
+    clicks = 0;
+    boardOff();
+    animate(cpu);
+  }  
+}
+
+
+function correct(clicks){ // bool handles our choice - right or wrong
+  if(cpu[clicks] == player[clicks]){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function win(){
+  alert("A winner is you!")
+  start();
+}
+
+function getColor(choice){
+  switch(choice){
+        case "b1":
+          aud1.play();
+          player.push(0);
+          break;
+        case "b2":
+          aud2.play();
+          player.push(1);
+          break;
+        case "b3":
+          aud3.play();
+          player.push(2);
+          break;
+        case "b4":
+          aud4.play();
+          player.push(3);
+          break;
+      }
+}
+
+function cpuColor(choice){
+  switch(choice){
+    case 0:
+      return "#b1";
+    case 1:
+      return "#b2";
+    case 2:
+      return "#b3";
+    case 3:
+      return "#b4";
+  }
+}
+
+function boardOn(){
+  $('#b1, #b2, #b3, #b4').on('click', myTurn);
+}
+
+function boardOff(){
+  $('#b1, #b2, #b3, #b4').off('click');
+}
+      //# sourceURL=pen.js
+    </script>
+
+    
+    
+    
+  </body>
+</html>
+ 
