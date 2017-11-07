@@ -20,7 +20,48 @@
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 
         <style>
-      /****** HEADER STUFF ******/
+.thumbnail iframe {
+  width: 1440px;
+  height: 900px;
+	pointer-events: none;
+}
+
+.thumbnail {
+  position: relative;
+  -ms-zoom: 0.2;
+  -moz-transform: scale(0.2);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.2);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.2);
+  -webkit-transform-origin: 0 0;
+}
+
+.thumbnail:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.thumbnail-container {
+  width: calc(1440px * 0.2);
+  height: calc(900px * 0.2);
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumbnail iframe {
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+}
+
+
+/****** HEADER STUFF ******/
 #tophead {
   background: url("https://s3-us-west-1.amazonaws.com/chellybear/pexels-photo-216798.jpeg") 100% 0 repeat fixed;
   background-color: white;
@@ -44,7 +85,7 @@
 }
 
 .photo-grid > li {
-  background-color: black;
+  background-color: none;
 }
 
 @-webkit-keyframes fadeIn {
@@ -410,7 +451,6 @@ i {
 i:hover {
   color: orange;
 }
-
     </style>
 
     
